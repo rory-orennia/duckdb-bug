@@ -1,4 +1,4 @@
-// Basic example copy from README
+// COMMENT OUT THE LINES BELOW TO RUN THE WORKING EXAMPLE
 extern crate skia_safe;
 
 mod canvas;
@@ -6,6 +6,7 @@ use canvas::Canvas;
 
 use std::fs::File;
 use std::io::Write;
+// END OF COMMENT OUT
 
 extern crate duckdb;
 
@@ -23,6 +24,7 @@ struct Person {
 
 fn main() -> Result<()> {
     // Copied from https://github.com/rust-skia/rust-skia/tree/master/skia-safe/examples/hello
+    // COMMENT OUT THE LINES BELOW TO RUN THE WORKING EXAMPLE
     let mut canvas = Canvas::new(2560, 1280);
     canvas.scale(1.2, 1.2);
     canvas.move_to(36.0, 48.0);
@@ -42,6 +44,7 @@ fn main() -> Result<()> {
     let mut file = File::create("test.png").unwrap();
     let bytes = d.as_bytes();
     file.write_all(bytes).unwrap();
+    // END OF COMMENT OUT
 
     // Copied from https://github.com/duckdb/duckdb-rs/blob/main/crates/duckdb/examples/basic.rs
     let conn = Connection::open_in_memory()?;
@@ -67,7 +70,7 @@ fn main() -> Result<()> {
     )?;
 
     // query table by rows
-    // HERE IS THE ERROR - changed name to named to make it miss.  Should return a nice error from duckdb but instead we panic
+    // HERE IS THE ERROR - changed 'name' to 'named' to make it miss.  Should return a nice error from duckdb but instead we panic
     let mut stmt = conn.prepare("SELECT id, named, data FROM person")?;
     let person_iter = stmt.query_map([], |row| {
         Ok(Person {
